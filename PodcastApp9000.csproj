@@ -72,10 +72,17 @@
 	  <Folder Include="Features\Implementation\Sync\" />
 	  <Folder Include="Features\Presentation\Views\" />
 	  <Folder Include="Features\Presentation\ViewModels\" />
+	  <Folder Include="PodcastApp9000.Tests.Integration\" />
+	  <Folder Include="PodcastApp9000.Tests.Unit\" />
 	  <Folder Include="Platforms\Android\Audio\" />
 	  <Folder Include="Platforms\Windows\Audio\" />
+	  <Folder Include="PodcastApp9000.Core\Services\" />
 	  <Folder Include="Resources\Images\" />
 	  <Folder Include="Resources\Styles\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="PodcastApp9000.Core\PodcastApp9000.Core.csproj" />
 	</ItemGroup>
 
 </Project>
