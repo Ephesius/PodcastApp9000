@@ -6,10 +6,17 @@ namespace PodcastApp9000
     {
         public App(IServiceProvider services)
         {
-            InitializeComponent();
+            if (services is not null)
+            {
+                InitializeComponent();
 
-            //MainPage = new AppShell();
-            MainPage = services.GetService<SearchPage>();
+                MainPage = new AppShell();
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
+            //MainPage = services.GetService<SearchPage>();
         }
     }
 }

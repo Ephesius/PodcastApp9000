@@ -27,46 +27,54 @@
                            Padding="10"
                            BorderColor="Transparent"
                            HasShadow="True">
+                        
+                        <!-- Gesture Recognizer -->
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SearchViewModel}}, Path=ShowDetailsCommand}"
+                                CommandParameter="{Binding .}"/>
+                        </Frame.GestureRecognizers>
+                        
                         <Grid ColumnDefinitions="60,*,Auto" 
                               RowDefinitions="Auto,Auto,Auto">
 
-                        <!-- Podcast Image -->
-                        <Image Grid.Column="0"
-                               Grid.RowSpan="3"
-                               Source="{Binding ImageUrl}"
-                               HeightRequest="60"
-                               WidthRequest="60"
-                               Aspect="AspectFill"/>
+                            <!-- Podcast Image -->
+                            <Image Grid.Column="0"
+                                   Grid.RowSpan="3"
+                                   Source="{Binding ImageUrl}"
+                                   HeightRequest="60"
+                                   WidthRequest="60"
+                                   Aspect="AspectFill"/>
 
-                        <!-- Title -->
-                        <Label Grid.Column="1"
-                               Grid.Row="0"
-                               Text="{Binding Title}"
-                               FontSize="16"
-                               FontAttributes="Bold"
-                               LineBreakMode="TailTruncation"/>
+                            <!-- Title -->
+                            <Label Grid.Column="1"
+                                   Grid.Row="0"
+                                   Text="{Binding Title}"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   LineBreakMode="TailTruncation"/>
 
-                        <!-- Author -->
-                        <Label Grid.Column="1"
-                               Grid.Row="1"
-                               Text="{Binding Author}"
-                               FontSize="14"
-                               TextColor="{AppThemeBinding Light={StaticResource Gray500}, 
-                                                           Dark={StaticResource Gray400}}"
-                               LineBreakMode="TailTruncation"/>
+                            <!-- Author -->
+                            <Label Grid.Column="1"
+                                   Grid.Row="1"
+                                   Text="{Binding Author}"
+                                   FontSize="14"
+                                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, 
+                                                               Dark={StaticResource Gray400}}"
+                                   LineBreakMode="TailTruncation"/>
 
                             <!-- Episode Count -->
                             <HorizontalStackLayout Grid.Column="1"
-                                               Grid.Row="2"
-                                               Spacing="5">
+                                                   Grid.Row="2"
+                                                   Spacing="5">
                                 <Label Text="{Binding EpisodeCount}"
-                                   FontSize="12"
-                                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, 
-                                                     Dark={StaticResource Gray400}}"/>
+                                       FontSize="12"
+                                       TextColor="{AppThemeBinding Light={StaticResource Gray500}, 
+                                                                   Dark={StaticResource Gray400}}"/>
                                 <Label Text="episodes"
-                                   FontSize="12"
-                                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, 
-                                                     Dark={StaticResource Gray400}}"/>
+                                       FontSize="12"
+                                       TextColor="{AppThemeBinding Light={StaticResource Gray500}, 
+                                                                   Dark={StaticResource Gray400}}"/>
                             </HorizontalStackLayout>
                             
                             <!-- Explicit Tag -->

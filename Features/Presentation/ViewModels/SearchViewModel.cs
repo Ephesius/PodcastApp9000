@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PodcastApp9000.Features.Presentation.Views;
 using PodcastApp9000.Models;
 using PodcastApp9000.PodcastApp9000.Core.Services;
 
@@ -56,6 +57,20 @@ namespace PodcastApp9000.Features.Presentation.ViewModels
             {
                 IsSearching = false;
             }
+        }
+
+        [RelayCommand]
+        private static async Task ShowDetails(Podcast podcast)
+        {
+            var viewModel = new PodcastDetailsViewModel();
+            viewModel.Initialize(podcast);
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                { "ViewModel", viewModel }
+            };
+
+            await Shell.Current.GoToAsync(nameof(PodcastDetailsPage), navigationParameter);
         }
     }
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PodcastApp9000.Features.Presentation.ViewModels"
+             x:Class="PodcastApp9000.Features.Presentation.Views.PodcastDetailsPage"
+             Title="{Binding Podcast.Title}">
+
+    <ScrollView>
+        <Grid Padding="20" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Podcast Image and Basic Info -->
+            <Grid Grid.Row="0" ColumnDefinitions="120,*" ColumnSpacing="15">
+                <Image Grid.Column="0"
+                       Source="{Binding Podcast.ImageUrl}"
+                       HeightRequest="120"
+                       WidthRequest="120"
+                       Aspect="AspectFill"/>
+
+                <VerticalStackLayout Grid.Column="1" Spacing="5">
+                    <Label Text="{Binding Podcast.Title}"
+                           FontSize="20"
+                           FontAttributes="Bold"/>
+                    <Label Text="{Binding Podcast.Author}"
+                           FontSize="16"/>
+                    <Label Text="{Binding Podcast.EpisodeCount, StringFormat='{0} episodes'}"
+                           FontSize="14"/>
+                </VerticalStackLayout>
+            </Grid>
+
+            <!-- Description -->
+            <Label Grid.Row="1" 
+                   Text="{Binding Podcast.Description}"
+                   TextType="Html"/>
+
+            <!-- Stats/Info -->
+            <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Label Grid.Column="0" 
+                       Text="{Binding Podcast.Language, StringFormat='Language: {0}'}"/>
+                <Label Grid.Column="1" 
+                       Text="{Binding Podcast.Categories[0], StringFormat='Category: {0}'}"/>
+            </Grid>
+
+            <!-- Episodes will go here in future update -->
+            <Label Grid.Row="3" 
+                   Text="Episodes coming soon!"
+                   HorizontalOptions="Center"/>
+        </Grid>
+    </ScrollView>
+</ContentPage>
