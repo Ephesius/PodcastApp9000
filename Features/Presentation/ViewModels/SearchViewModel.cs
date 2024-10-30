@@ -24,7 +24,7 @@ namespace PodcastApp9000.Features.Presentation.ViewModels
 
         partial void OnIsSearchingChanged(bool value)
         {
-            isNotSearching = !value;
+            IsNotSearching = !value;
         }
 
         [RelayCommand]
