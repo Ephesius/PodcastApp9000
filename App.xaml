@@ -4,10 +4,21 @@
              xmlns:local="clr-namespace:PodcastApp9000"
              x:Class="PodcastApp9000.App">
     <Application.Resources>
+        <x:String x:Key="ApiAttribution">Powered by Podcast Index</x:String>
         <ResourceDictionary>
+            <Color x:Key="Primary">#512BD4</Color>
+            <Color x:Key="Gray100">#E1E1E1</Color>
+            <Color x:Key="Gray200">#C8C8C8</Color>
+            <Color x:Key="Gray300">#ACACAC</Color>
+            <Color x:Key="Gray400">#919191</Color>
+            <Color x:Key="Gray500">#6E6E6E</Color>
+            <Color x:Key="Gray600">#404040</Color>
+            <Color x:Key="Gray900">#212121</Color>
+            <Color x:Key="Gray950">#141414</Color>
+            
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <!-- <ResourceDictionary Source="Resources/Styles/Colors.xaml" /> -->
+                <!-- <ResourceDictionary Source="Resources/Styles/Styles.xaml" /> -->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

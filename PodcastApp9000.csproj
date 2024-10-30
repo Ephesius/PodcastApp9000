@@ -56,9 +56,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.92" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.92" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -70,19 +71,22 @@
 	  <Folder Include="Features\Implementation\Discovery\" />
 	  <Folder Include="Features\Implementation\Library\" />
 	  <Folder Include="Features\Implementation\Sync\" />
-	  <Folder Include="Features\Presentation\Views\" />
-	  <Folder Include="Features\Presentation\ViewModels\" />
 	  <Folder Include="PodcastApp9000.Tests.Integration\" />
 	  <Folder Include="PodcastApp9000.Tests.Unit\" />
 	  <Folder Include="Platforms\Android\Audio\" />
 	  <Folder Include="Platforms\Windows\Audio\" />
-	  <Folder Include="PodcastApp9000.Core\Services\" />
 	  <Folder Include="Resources\Images\" />
 	  <Folder Include="Resources\Styles\" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <None Include="PodcastApp9000.Core\PodcastApp9000.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Features\Presentation\Views\SearchPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

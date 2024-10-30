@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PodcastApp9000.Features.Presentation.ViewModels"
+             x:Class="PodcastApp9000.Features.Presentation.Views.SearchPage"
+             Title="Search Podcasts">
+
+    <Grid RowDefinitions="Auto,*"
+          RowSpacing="20"
+          Padding="20">
+
+        <!-- Search Bar -->
+        <SearchBar Grid.Row="0"
+                   Text="{Binding SearchTerm}"
+                   SearchCommand="{Binding SearchCommand}"
+                   Placeholder="Search podcasts..."
+                   HorizontalOptions="Fill"/>
+
+        <!-- Results -->
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding SearchResults}"
+                        SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="0,5" 
+                           Padding="10"
+                           BorderColor="Transparent"
+                           HasShadow="True">
+                        <Grid ColumnDefinitions="60,*,Auto" 
+                              RowDefinitions="Auto,Auto,Auto">
+
+                        <!-- Podcast Image -->
+                        <Image Grid.Column="0"
+                               Grid.RowSpan="3"
+                               Source="{Binding ImageUrl}"
+                               HeightRequest="60"
+                               WidthRequest="60"
+                               Aspect="AspectFill"/>
+
+                        <!-- Title -->
+                        <Label Grid.Column="1"
+                               Grid.Row="0"
+                               Text="{Binding Title}"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               LineBreakMode="TailTruncation"/>
+
+                        <!-- Author -->
+                        <Label Grid.Column="1"
+                               Grid.Row="1"
+                               Text="{Binding Author}"
+                               FontSize="14"
+                               TextColor="{AppThemeBinding Light={StaticResource Gray500}, 
+                                                           Dark={StaticResource Gray400}}"
+                               LineBreakMode="TailTruncation"/>
+
+                            <!-- Episode Count -->
+                            <HorizontalStackLayout Grid.Column="1"
+                                               Grid.Row="2"
+                                               Spacing="5">
+                                <Label Text="{Binding EpisodeCount}"
+                                   FontSize="12"
+                                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, 
+                                                     Dark={StaticResource Gray400}}"/>
+                                <Label Text="episodes"
+                                   FontSize="12"
+                                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, 
+                                                     Dark={StaticResource Gray400}}"/>
+                            </HorizontalStackLayout>
+                            
+                            <!-- Explicit Tag -->
+                            <Frame Grid.Column="2"
+                                   Grid.Row="0"
+                                   IsVisible="{Binding Explicit}"
+                                   BackgroundColor="DarkGray"
+                                   Padding="6,2"
+                                   CornerRadius="4"
+                                   HasShadow="False">   
+                                <Label Text="E"
+                                       FontSize="12"
+                                       TextColor="White"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"/>
+                            </Frame>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <!-- Empty State -->
+            <CollectionView.EmptyView>
+                <VerticalStackLayout VerticalOptions="Center"
+                                     HorizontalOptions="Center">
+                    <Label Text="No podcasts found"
+                           FontSize="18"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Try searching for something else"
+                           FontSize="14"
+                           TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+        </CollectionView>
+
+        <!-- Loading Indicator -->
+        <Grid Grid.Row="1"
+              IsVisible="{Binding IsSearching}"
+              RowDefinitions="*,Auto,Auto,*"
+              RowSpacing="10">
+            <ActivityIndicator Grid.Row="1"
+                               IsRunning="True"
+                               HorizontalOptions="Center"
+                               WidthRequest="50"
+                               HeightRequest="50"/>
+            <Label Grid.Row="2"
+                   Text="Searching podcasts..."
+                   HorizontalOptions="Center"
+                   FontSize="16"/>
+        </Grid>
+    </Grid>
+</ContentPage>
