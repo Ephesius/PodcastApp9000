@@ -37,6 +37,9 @@ namespace PodcastApp9000.Models
         [JsonPropertyName("categories")]
         public Dictionary<string, string> Categories { get; set; } = new();
 
+        [JsonPropertyName("explicit")]
+        public bool Explicit { get; set; }
+
         // Helper property to get the best available image URL
         public string BestImageUrl => !string.IsNullOrEmpty(ArtworkUrl)
             ? ArtworkUrl

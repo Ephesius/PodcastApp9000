@@ -28,16 +28,7 @@ namespace PodcastApp9000.PodcastApp9000.Core.Services
             _throttle = new SemaphoreSlim(1, 1);
 
             // Set a default User-Agent (matching their sample's style)
-            _httpClient.DefaultRequestHeaders.Add("User-Agent", "PodcastApp9000/1.0");
-        }
-
-        private string GenerateAuthorizationHash(int epochTimestamp)
-        {
-            var hashString = _apiKey + _apiSecret + epochTimestamp;
-            // Modern equivalent of SHA1Managed
-            var hash = SHA1.HashData(Encoding.UTF8.GetBytes(hashString));
-
-            return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+            //_httpClient.DefaultRequestHeaders.Add("User-Agent", "PodcastApp9000/1.0");
         }
 
         private async Task ThrottleRequestAsync()
